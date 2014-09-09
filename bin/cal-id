@@ -1,7 +1,7 @@
 #!perl
 
 our $DATE = '2014-09-06'; # DATE
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 use 5.010001;
 use strict;
@@ -63,7 +63,7 @@ cal-id - Display Indonesian calendar on the command-line
 
 =head1 VERSION
 
-This document describes version 0.08 of cal-id (from Perl distribution App-CalId), released on 2014-09-06.
+This document describes version 0.09 of cal-id (from Perl distribution App-CalId), released on 2014-09-06.
 
 =head1 SYNOPSIS
 

@@ -11,7 +11,7 @@ use List::Util qw(max);
 use Term::ANSIColor;
 use Text::ANSI::Util qw(ta_length);
 
-our $VERSION = '0.08'; # VERSION
+our $VERSION = '0.09'; # VERSION
 
 my $month_names = [qw(Januari Februari Maret April Mei Juni Juli Agustus September Oktober November Desember)];
 my $short_month_names = [qw(Jan Feb Mar Apr Mei Jun Jul Agt Sep Okt Nov Des)];
@@ -171,7 +171,7 @@ _
             schema => 'str*',
         },
     },
-    "_perinci.sub.wrapper.validate_args" => 0,
+    "x.perinci.sub.wrapper.disable_validate_args" => 1,
 };
 sub gen_calendar {
     my %args = @_; my $_sahv_dpath = []; my $arg_err; ($args{'highlight_today'} //= 1, 1) && (!defined($args{'highlight_today'}) ? 1 :  ((!ref($args{'highlight_today'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type boolean value"),0))); if ($arg_err) { return [400, "Invalid argument value for highlight_today: $arg_err"] } require Scalar::Util::Numeric;if (exists($args{'month'})) { ((defined($args{'month'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::Numeric::isint($args{'month'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type integer"),0)); if ($arg_err) { return [400, "Invalid argument value for month: $arg_err"] } }($args{'months'} //= 1, 1) && ((defined($args{'months'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::Numeric::isint($args{'months'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type integer"),0)) && (($args{'months'} >= 1) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Must be at least 1"),0)) && (($args{'months'} <= 12) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Must be at most 12"),0)); if ($arg_err) { return [400, "Invalid argument value for months: $arg_err"] } ($args{'show_holiday_list'} //= 1, 1) && (!defined($args{'show_holiday_list'}) ? 1 :  ((!ref($args{'show_holiday_list'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type boolean value"),0))); if ($arg_err) { return [400, "Invalid argument value for show_holiday_list: $arg_err"] } ($args{'show_joint_leave'} //= 0, 1) && (!defined($args{'show_joint_leave'}) ? 1 :  ((!ref($args{'show_joint_leave'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type boolean value"),0))); if ($arg_err) { return [400, "Invalid argument value for show_joint_leave: $arg_err"] } if (exists($args{'time_zone'})) { ((defined($args{'time_zone'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((!ref($args{'time_zone'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type text"),0)); if ($arg_err) { return [400, "Invalid argument value for time_zone: $arg_err"] } }if (!exists($args{'year'})) { return [400, "Missing argument: year"] } ((defined($args{'year'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Required input not specified"),0)) && ((Scalar::Util::Numeric::isint($args{'year'})) ? 1 : (($arg_err //= (@$_sahv_dpath ? '@'.join("/",@$_sahv_dpath).": " : "") . "Input is not of type integer"),0)); if ($arg_err) { return [400, "Invalid argument value for year: $arg_err"] } # VALIDATE_ARGS
@@ -247,7 +247,7 @@ App::CalId - Display Indonesian calendar on the command-line
 
 =head1 VERSION
 
-This document describes version 0.08 of App::CalId (from Perl distribution App-CalId), released on 2014-09-06.
+This document describes version 0.09 of App::CalId (from Perl distribution App-CalId), released on 2014-09-06.
 
 =head1 SYNOPSIS
 

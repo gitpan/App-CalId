@@ -58,7 +58,7 @@
          "web" : "https://github.com/sharyanto/perl-App-cal-id"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.018001"
@@ -302,7 +302,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Rinci::Validate",
             "name" : "@Author::PERLANCAR/Rinci::Validate",
-            "version" : "0.13"
+            "version" : "0.15"
          },
          {
             "class" : "Dist::Zilla::Plugin::SetScriptShebang",
